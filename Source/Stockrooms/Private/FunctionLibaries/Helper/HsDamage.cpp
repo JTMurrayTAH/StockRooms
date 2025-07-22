@@ -12,10 +12,11 @@ void UHsDamage::TryDamage(TScriptInterface<IDamageable> Target,FHealth& TargetHp
 	if (!IDamageable::Execute_IsDamageable(Target.GetObject()))
 	{
 		IDamageable::Execute_Failed_Damage(Target.GetObject(), DmgValue, Attacker);
-		return;
+             		return;
 	}
 	else
 	{
+		
 		IDamageable::Execute_Success_Damage(Target.GetObject(), TargetHp, DmgValue, Attacker);
 	}
 	

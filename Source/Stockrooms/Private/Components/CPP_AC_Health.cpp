@@ -56,8 +56,8 @@ void UCPP_AC_Health::Failed_Heal_Implementation(float DmgValue, AActor* Attacker
 }
 
 
-// Damage Interface
-bool UCPP_AC_Health::IsDamaged_Implementation(float DmgValue, AActor* Attacker)
+// Damage Interfaces
+bool UCPP_AC_Health::IsDamageable_Implementation()
 {
 	return bCanBeDamaged;
 }
@@ -69,11 +69,13 @@ void UCPP_AC_Health::OnDamage_Implementation(float DmgValue, AActor* Attacker)
 
 void UCPP_AC_Health::Failed_Damage_Implementation(float DmgValue, AActor* Attacker)
 {
-	IDamageable::Failed_Damage_Implementation(DmgValue, Attacker);
+	UE_LOG(LogTemp, Warning, TEXT("Failed"));
+	
 }
 
 void UCPP_AC_Health::Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Calling Damage"));
 	UHsDamage::OnDamage(TargetHp, DmgValue, Attacker);
 }
 

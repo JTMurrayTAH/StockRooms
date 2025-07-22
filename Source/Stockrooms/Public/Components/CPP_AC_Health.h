@@ -23,10 +23,10 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Health")
-	bool bCanbeHealed;
+	bool bCanbeHealed = true;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Damage")
-	bool bCanBeDamaged;
+	bool bCanBeDamaged = true;
 
 	
 
@@ -41,8 +41,8 @@ public:
 	virtual void Success_Heal_Implementation(float DmgValue, AActor* Attacker) override;
 	virtual void Failed_Heal_Implementation(float DmgValue, AActor* Attacker) override;
 
-	// ---- IHealable implementation ----
-	virtual bool IsDamaged_Implementation(float DmgValue, AActor* Attacker);
+	// ---- Idamage implementation ----
+	virtual bool IsDamageable_Implementation();
 	virtual void OnDamage_Implementation(float DmgValue, AActor* Attacker) override;
 	virtual void Failed_Damage_Implementation(float DmgValue, AActor* Attacker) override;
 	virtual void Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker) override;
