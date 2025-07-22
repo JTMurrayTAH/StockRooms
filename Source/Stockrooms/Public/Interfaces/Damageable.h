@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-
+#include "GenericData/S_Health.h"
 #include "Damageable.generated.h"
 
 // This class does not need to be modified.
@@ -25,12 +25,16 @@ class STOCKROOMS_API IDamageable
 public:
 	/// Is Object immune to damage?
 	/// @return can be damaged?
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Damage")
 	bool IsDamageable();
-
+	
 	/// What happens when Object is Damaged.
-	void OnDamage(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Damage")
+	void OnDamage(float DmgValue, AActor* Attacker);
 	/// When Damage is successful.
-	void Success_Damage(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Damage")
+	void Success_Damage(UPARAM(ref) FHealth& TargetHp,float DmgValue, AActor* Attacker);
 	/// When Damage is Failed.
-	void Failed_Damage(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Damage")
+	void Failed_Damage(float DmgValue, AActor* Attacker);
 };

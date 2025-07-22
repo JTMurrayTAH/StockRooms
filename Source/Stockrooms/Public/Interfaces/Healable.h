@@ -25,12 +25,16 @@ class STOCKROOMS_API IHealable
 public:
 	/// Is Object immune to Healing?
 	/// @return can be Healed?
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
 	bool IsHealable();
 
 	/// What happens when Object is Healed.
-	void OnHeal(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
+	void OnHeal(float DmgValue, AActor* Attacker);
 	/// When Healing is successful.
-	void Success_Heal(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
+	void Success_Heal(float DmgValue, AActor* Attacker);
 	/// When Healing is Failed.
-	void Failed_Heal(float& DmgValue, AActor* Attacker);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
+	void Failed_Heal(float DmgValue, AActor* Attacker);
 };
