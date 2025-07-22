@@ -23,6 +23,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Health")
+	FHealth Health;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Health")
 	bool bCanbeHealed = true;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Damage")
@@ -35,6 +38,11 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
+
+	// Getter
+	UFUNCTION(BlueprintPure, Category = "Health")
+	FHealth GetHealth() const { return Health; }
+	
 	// ---- IHealable implementation ----
 	virtual bool IsHealable_Implementation() override;
 	virtual void OnHeal_Implementation(float DmgValue, AActor* Attacker) override;

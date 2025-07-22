@@ -76,7 +76,7 @@ void UCPP_AC_Health::Failed_Damage_Implementation(float DmgValue, AActor* Attack
 void UCPP_AC_Health::Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Calling Damage"));
-	UHsDamage::OnDamage(TargetHp, DmgValue, Attacker);
+	UHsDamage::OnDamage(TargetHp, DmgValue);
 }
 
 

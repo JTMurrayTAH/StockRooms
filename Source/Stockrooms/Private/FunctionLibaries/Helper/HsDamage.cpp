@@ -22,7 +22,13 @@ void UHsDamage::TryDamage(TScriptInterface<IDamageable> Target,FHealth& TargetHp
 	
 }
 
-void UHsDamage::OnDamage(FHealth& TargetHp, float DmgValue, AActor* Attacker)
+void UHsDamage::OnDamage(FHealth& TargetHp, float DmgValue)
 {
-	TargetHp.Current -= DmgValue;
+	TargetHp.Current =FMath::Clamp(TargetHp.Current -= DmgValue,0.0,TargetHp.Max);
+}
+
+bool UHsDamage::IsDead(FHealth& TargetHp)
+{
+	if (TargetHp.Current > 0) {return false;}
+	return true;
 }
