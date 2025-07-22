@@ -3,6 +3,8 @@
 
 #include "Components/CPP_AC_Health.h"
 
+#include "FunctionLibaries/Helper/HsDamage.h"
+
 
 // Sets default values for this component's properties
 UCPP_AC_Health::UCPP_AC_Health()
@@ -45,7 +47,7 @@ void UCPP_AC_Health::OnHeal_Implementation(float DmgValue, AActor* Attacker)
 
 void UCPP_AC_Health::Success_Heal_Implementation(float DmgValue, AActor* Attacker)
 {
-	IHealable::Success_Heal_Implementation(DmgValue, Attacker);
+	
 }
 
 void UCPP_AC_Health::Failed_Heal_Implementation(float DmgValue, AActor* Attacker)
@@ -72,7 +74,7 @@ void UCPP_AC_Health::Failed_Damage_Implementation(float DmgValue, AActor* Attack
 
 void UCPP_AC_Health::Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker)
 {
-	IDamageable::Success_Damage_Implementation(TargetHp, DmgValue, Attacker);
+	UHsDamage::OnDamage(TargetHp, DmgValue, Attacker);
 }
 
 

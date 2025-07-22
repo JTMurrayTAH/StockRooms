@@ -41,6 +41,7 @@ public:
 	virtual void Success_Heal_Implementation(float DmgValue, AActor* Attacker) override;
 	virtual void Failed_Heal_Implementation(float DmgValue, AActor* Attacker) override;
 
+	// ---- IHealable implementation ----
 	virtual bool IsDamaged_Implementation(float DmgValue, AActor* Attacker);
 	virtual void OnDamage_Implementation(float DmgValue, AActor* Attacker) override;
 	virtual void Failed_Damage_Implementation(float DmgValue, AActor* Attacker) override;

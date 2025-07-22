@@ -19,6 +19,7 @@ class STOCKROOMS_API UHsDamage : public UBlueprintFunctionLibrary
 	public:
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
 	static void TryDamage(TScriptInterface<IDamageable> Target, UPARAM(ref) FHealth& TargetHp, float DmgValue, AActor* Attacker);
+	
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
 	static void OnDamage(UPARAM(ref) FHealth& TargetHp, float DmgValue, AActor* Attacker);
 };
