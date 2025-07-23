@@ -30,11 +30,11 @@ public:
 
 	/// What happens when Object is Healed.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void OnHeal(float DmgValue, AActor* Attacker);
+	void OnHeal(float HealValue, AActor* Healer);
 	/// When Healing is successful.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void Success_Heal(float DmgValue, AActor* Attacker);
+	void Success_Heal(float HealValue, AActor* Healer);
 	/// When Healing is Failed.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void Failed_Heal(float DmgValue, AActor* Attacker);
+	void Failed_Heal(float HealValue, AActor* Healer);
 };

@@ -23,6 +23,6 @@ class STOCKROOMS_API UHsDamage : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
 	static void OnDamage(UPARAM(ref) FHealth& TargetHp, float DmgValue);
 
-	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
+	UFUNCTION(BlueprintCallable, Category = "HelperScript|Health|Generic")
 	static bool IsDead(UPARAM(ref) FHealth& TargetHp);
 };

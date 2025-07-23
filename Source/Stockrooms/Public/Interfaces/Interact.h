@@ -22,4 +22,16 @@ class STOCKROOMS_API IInteract
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	/// Is the object Interactable.
+	/// @return True or false, if it can interact.
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interact")
+	bool CanInteract(AActor* Interactor);
+
+	/// On a successful Interact.
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interact")
+	void Successful_Interact(AActor* Interactor);
+
+	/// On a failed Interact.
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interact")
+	void Failed_Interact(AActor* Interactor);
 };
