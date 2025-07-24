@@ -22,14 +22,14 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Health")
-	FHealth Health;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Health")
-	bool bCanbeHealed = true;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Damage")
-	bool bCanBeDamaged = true;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Health")
+        	FHealth Health;
+        
+        	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Health")
+        	bool bCanbeHealed = true;
+        
+        	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Damage")
+        	bool bCanBeDamaged = true;
 
 	
 
@@ -37,7 +37,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
-
+	
 
 	// Getter
 	UFUNCTION(BlueprintPure, Category = "Health")

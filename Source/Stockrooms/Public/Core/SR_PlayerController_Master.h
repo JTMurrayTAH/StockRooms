@@ -10,8 +10,12 @@
  * 
  */
 UCLASS()
+
+
 class STOCKROOMS_API ASR_PlayerController_Master : public APlayerController
 {
 	GENERATED_BODY()
+
+
 	
 };
