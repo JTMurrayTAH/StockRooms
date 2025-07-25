@@ -6,12 +6,13 @@
 #include "GameFramework/Character.h"
 #include "SR_PlayerMaster.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMove, FVector2D, Direction);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnJump, bool, bPressed);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMouseLook, FVector2D, LookVector);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteract, bool, bPressed);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLeftHandUse, bool, bPressed);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRightHandUse, bool, bPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMove, 		FVector2D,	Direction);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnJump, 		bool,		bPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMouseLook, 	FVector2D,	LookVector);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteract, 	bool,		bPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLeftHandUse, bool,		bPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRightHandUse,bool,		bPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTakeDamage, float,		DmgInput, AActor*, DmgSource);
 
 UCLASS()
 class STOCKROOMS_API ASR_PlayerMaster : public ACharacter
@@ -37,38 +38,44 @@ public:
 protected:
 	// Delegates
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_Move(FVector2D Vector2Input);
+	void CallEvent_Move			(FVector2D Vector2Input);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_Jump(bool Input);
+	void CallEvent_Jump			(bool Input);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_MouseLook(FVector2D Vector2Input);
+	void CallEvent_MouseLook	(FVector2D Vector2Input);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_Interact(bool TryingToInteract);
+	void CallEvent_Interact		(bool TryingToInteract);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_LeftHandUse(bool tryingToUse);
+	void CallEvent_LeftHandUse	(bool TryingToUse);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_RightHandUse(bool TryingToUse);
+	void CallEvent_RightHandUse	(bool TryingToUse);
+	UFUNCTION(BlueprintCallable)
+	void CallEvent_TakeDamage	(float DmgInput, AActor* DamageSource);
 
 	//Overrideable for each Instance of player, IE the actual Logic.
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnMove_Event(FVector2D Vector2Input);
+	void OnMove_Event			(FVector2D Vector2Input);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnJump_Event(bool Input);
+	void OnJump_Event			(bool Input);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnMouseLook_Event(FVector2D Vector2Input);
+	void OnMouseLook_Event		(FVector2D Vector2Input);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnInteract_Event(bool TryingToInteract);
+	void OnInteract_Event		(bool TryingToInteract);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnLeftHandUse_Event(bool tryingToUse);
+	void OnLeftHandUse_Event	(bool tryingToUse);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnRightHandUse_Event(bool TryingToUse);
+	void OnRightHandUse_Event	(bool TryingToUse);
+	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
+	void OnTakeDamage_Event	(float DmgInput, AActor* DamageSource);
 	
 public:
 	//Event variables.
+
+	//Input
 	UPROPERTY(BlueprintAssignable, Category="InputEvents")
-	FOnMove	OnMove;
+	FOnMove			OnMove;
 	UPROPERTY(BlueprintAssignable, Category="InputEvents")
-	FOnJump	OnJump;
+	FOnJump			OnJump;
 	UPROPERTY(BlueprintAssignable, Category="InputEvents")
 	FOnMouseLook	OnMouseLook;
 	UPROPERTY(BlueprintAssignable, Category="InputEvents")
@@ -77,4 +84,8 @@ public:
 	FOnLeftHandUse	OnLeftHandUse;
 	UPROPERTY(BlueprintAssignable, Category="InputEvents")
 	FOnRightHandUse	OnRightHandUse;
+
+	//Damage
+	UPROPERTY(BlueprintAssignable, Category="Damage")
+	FOnTakeDamage OnTakeDmg;
 };

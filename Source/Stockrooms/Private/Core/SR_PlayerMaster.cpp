@@ -68,6 +68,11 @@ void ASR_PlayerMaster::CallEvent_RightHandUse(bool TryingToUse)
 {
 	OnRightHandUse.Broadcast(TryingToUse);
 }
+
+void ASR_PlayerMaster::CallEvent_TakeDamage(float DmgInput, AActor* DamageSource)
+{
+	OnTakeDmg.Broadcast(DmgInput, DamageSource);
+}
 #pragma endregion Events
 
 #pragma region Actions
@@ -94,4 +99,9 @@ void ASR_PlayerMaster::OnJump_Event_Implementation(bool Input)
 void ASR_PlayerMaster::OnMove_Event_Implementation(FVector2D Vector2Input)
 {
 }
+
+void ASR_PlayerMaster::OnTakeDamage_Event_Implementation(float DmgInput, AActor* DamageSource)
+{
+}
+
 #pragma endregion Actions
