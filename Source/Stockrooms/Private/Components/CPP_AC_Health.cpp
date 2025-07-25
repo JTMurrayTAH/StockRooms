@@ -40,17 +40,17 @@ bool UCPP_AC_Health::IsHealable_Implementation()
 	return bCanbeHealed;
 }
 
-void UCPP_AC_Health::OnHeal_Implementation(float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::OnHeal_Implementation(FS_DmgInput DmgValue, AActor* Attacker)
 {
 	IHealable::OnHeal_Implementation(DmgValue, Attacker);
 }
 
-void UCPP_AC_Health::Success_Heal_Implementation(float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::Success_Heal_Implementation(FS_DmgInput DmgValue, AActor* Attacker)
 {
 	
 }
 
-void UCPP_AC_Health::Failed_Heal_Implementation(float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::Failed_Heal_Implementation(FS_DmgInput DmgValue, AActor* Attacker)
 {
 	IHealable::Failed_Heal_Implementation(DmgValue, Attacker);
 }
@@ -62,18 +62,18 @@ bool UCPP_AC_Health::IsDamageable_Implementation()
 	return bCanBeDamaged;
 }
 
-void UCPP_AC_Health::OnDamage_Implementation(float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::OnDamage_Implementation(FS_DmgInput DmgValue, AActor* Attacker)
 {
 	IDamageable::OnDamage_Implementation(DmgValue, Attacker);
 }
 
-void UCPP_AC_Health::Failed_Damage_Implementation(float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::Failed_Damage_Implementation(FS_DmgInput DmgValue, AActor* Attacker)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Failed"));
 	
 }
 
-void UCPP_AC_Health::Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker)
+void UCPP_AC_Health::Success_Damage_Implementation(FHealth& TargetHp, FS_DmgInput DmgValue, AActor* Attacker)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Calling Damage"));
 	UHsDamage::OnDamage(TargetHp, DmgValue);

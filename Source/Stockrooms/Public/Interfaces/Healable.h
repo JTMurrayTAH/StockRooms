@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-
+#include "GenericData/S_DmgInput.h"
 #include "Healable.generated.h"
 
 // This class does not need to be modified.
@@ -30,11 +30,11 @@ public:
 
 	/// What happens when Object is Healed.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void OnHeal(float HealValue, AActor* Healer);
+	void OnHeal(FS_DmgInput HealValue, AActor* Healer);
 	/// When Healing is successful.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void Success_Heal(float HealValue, AActor* Healer);
+	void Success_Heal(FS_DmgInput HealValue, AActor* Healer);
 	/// When Healing is Failed.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Heal")
-	void Failed_Heal(float HealValue, AActor* Healer);
+	void Failed_Heal(FS_DmgInput HealValue, AActor* Healer);
 };

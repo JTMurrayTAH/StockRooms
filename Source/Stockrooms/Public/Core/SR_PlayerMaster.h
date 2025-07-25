@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GenericData/S_DmgInput.h"
 #include "SR_PlayerMaster.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMove, 		FVector2D,	Direction);
@@ -12,7 +13,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMouseLook, 	FVector2D,	LookVector
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteract, 	bool,		bPressed);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLeftHandUse, bool,		bPressed);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRightHandUse,bool,		bPressed);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTakeDamage, float,		DmgInput, AActor*, DmgSource);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTakeDamage, FS_DmgInput,	DmgInput, AActor*, DmgSource);
 
 UCLASS()
 class STOCKROOMS_API ASR_PlayerMaster : public ACharacter
@@ -50,7 +51,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void CallEvent_RightHandUse	(bool TryingToUse);
 	UFUNCTION(BlueprintCallable)
-	void CallEvent_TakeDamage	(float DmgInput, AActor* DamageSource);
+	void CallEvent_TakeDamage	(FS_DmgInput DmgInput, AActor* DamageSource);
 
 	//Overrideable for each Instance of player, IE the actual Logic.
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
@@ -66,7 +67,7 @@ protected:
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
 	void OnRightHandUse_Event	(bool TryingToUse);
 	UFUNCTION(BlueprintCallable, blueprintNativeEvent, Category = "Input|Overrideable")
-	void OnTakeDamage_Event	(float DmgInput, AActor* DamageSource);
+	void OnTakeDamage_Event	(FS_DmgInput DmgInput, AActor* DamageSource);
 	
 public:
 	//Event variables.

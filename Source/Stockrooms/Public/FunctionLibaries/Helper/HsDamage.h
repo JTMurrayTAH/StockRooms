@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GenericData/S_DmgInput.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Stockrooms/Public/Interfaces/Damageable.h"
 #include "GenericData/S_Health.h"
@@ -18,10 +19,10 @@ class STOCKROOMS_API UHsDamage : public UBlueprintFunctionLibrary
 
 	public:
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
-	static void TryDamage(TScriptInterface<IDamageable> Target, UPARAM(ref) FHealth& TargetHp, float DmgValue, AActor* Attacker);
+	static void TryDamage(TScriptInterface<IDamageable> Target, UPARAM(ref) FHealth& TargetHp, FS_DmgInput DmgValue, AActor* Attacker);
 	
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Damage")
-	static void OnDamage(UPARAM(ref) FHealth& TargetHp, float DmgValue);
+	static void OnDamage(UPARAM(ref) FHealth& TargetHp, FS_DmgInput DmgValue);
 
 	UFUNCTION(BlueprintCallable, Category = "HelperScript|Health|Generic")
 	static bool IsDead(UPARAM(ref) FHealth& TargetHp);

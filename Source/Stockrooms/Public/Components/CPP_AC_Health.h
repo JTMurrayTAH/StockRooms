@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "Interfaces/Damageable.h"
 #include "Interfaces/Healable.h"
+#include "GenericData/S_DmgInput.h"
 #include "CPP_AC_Health.generated.h"
 
 
@@ -45,15 +46,15 @@ public:
 	
 	// ---- IHealable implementation ----
 	virtual bool IsHealable_Implementation() override;
-	virtual void OnHeal_Implementation(float DmgValue, AActor* Attacker) override;
-	virtual void Success_Heal_Implementation(float DmgValue, AActor* Attacker) override;
-	virtual void Failed_Heal_Implementation(float DmgValue, AActor* Attacker) override;
+	virtual void OnHeal_Implementation(FS_DmgInput DmgValue, AActor* Attacker) override;
+	virtual void Success_Heal_Implementation(FS_DmgInput DmgValue, AActor* Attacker) override;
+	virtual void Failed_Heal_Implementation(FS_DmgInput DmgValue, AActor* Attacker) override;
 
 	// ---- Idamage implementation ----
 	virtual bool IsDamageable_Implementation();
-	virtual void OnDamage_Implementation(float DmgValue, AActor* Attacker) override;
-	virtual void Failed_Damage_Implementation(float DmgValue, AActor* Attacker) override;
-	virtual void Success_Damage_Implementation(FHealth& TargetHp, float DmgValue, AActor* Attacker) override;
+	virtual void OnDamage_Implementation(FS_DmgInput DmgValue, AActor* Attacker) override;
+	virtual void Failed_Damage_Implementation(FS_DmgInput DmgValue, AActor* Attacker) override;
+	virtual void Success_Damage_Implementation(FHealth& TargetHp, FS_DmgInput DmgValue, AActor* Attacker) override;
 
 	
 };

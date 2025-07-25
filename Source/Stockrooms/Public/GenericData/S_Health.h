@@ -4,7 +4,7 @@
 #include "S_Health.generated.h"
 
 USTRUCT(Blueprintable, BlueprintType)
-struct STOCKROOMS_API FHealth
+struct FHealth
 {
 	GENERATED_BODY()
 

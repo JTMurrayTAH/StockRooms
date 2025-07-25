@@ -4,7 +4,7 @@
 #include "Stockrooms/Public/FunctionLibaries/Helper/HsDamage.h"
 
 
-void UHsDamage::TryDamage(TScriptInterface<IDamageable> Target,FHealth& TargetHp, float DmgValue, AActor* Attacker)
+void UHsDamage::TryDamage(TScriptInterface<IDamageable> Target,FHealth& TargetHp, FS_DmgInput DmgValue, AActor* Attacker)
 {
 	//if (Target == nullptr || Attacker == nullptr) return;
 
@@ -22,9 +22,9 @@ void UHsDamage::TryDamage(TScriptInterface<IDamageable> Target,FHealth& TargetHp
 	
 }
 
-void UHsDamage::OnDamage(FHealth& TargetHp, float DmgValue)
+void UHsDamage::OnDamage(FHealth& TargetHp, FS_DmgInput DmgValue)
 {
-	TargetHp.Current =FMath::Clamp(TargetHp.Current -= DmgValue,0.0,TargetHp.Max);
+	TargetHp.Current =FMath::Clamp(TargetHp.Current -= DmgValue.FleshDmg,0.0,TargetHp.Max);
 }
 
 bool UHsDamage::IsDead(FHealth& TargetHp)

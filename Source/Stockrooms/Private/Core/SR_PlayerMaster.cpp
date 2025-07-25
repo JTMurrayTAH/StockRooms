@@ -69,7 +69,7 @@ void ASR_PlayerMaster::CallEvent_RightHandUse(bool TryingToUse)
 	OnRightHandUse.Broadcast(TryingToUse);
 }
 
-void ASR_PlayerMaster::CallEvent_TakeDamage(float DmgInput, AActor* DamageSource)
+void ASR_PlayerMaster::CallEvent_TakeDamage(FS_DmgInput DmgInput, AActor* DamageSource)
 {
 	OnTakeDmg.Broadcast(DmgInput, DamageSource);
 }
@@ -100,7 +100,7 @@ void ASR_PlayerMaster::OnMove_Event_Implementation(FVector2D Vector2Input)
 {
 }
 
-void ASR_PlayerMaster::OnTakeDamage_Event_Implementation(float DmgInput, AActor* DamageSource)
+void ASR_PlayerMaster::OnTakeDamage_Event_Implementation(FS_DmgInput DmgInput, AActor* DamageSource)
 {
 }
 

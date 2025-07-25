@@ -4,7 +4,7 @@
 #include "Stockrooms/Public/FunctionLibaries/Helper/HsHeal.h"
 
 
-void UHsHeal::TryToHeal(TScriptInterface<IHealable> Target, FHealth& TargetHp, float HealValue, AActor* Healer)
+void UHsHeal::TryToHeal(TScriptInterface<IHealable> Target, FHealth& TargetHp, FS_DmgInput HealValue, AActor* Healer)
 {
 	if (!IHealable::Execute_IsHealable(Target.GetObject()))
 	{
@@ -19,6 +19,6 @@ void UHsHeal::TryToHeal(TScriptInterface<IHealable> Target, FHealth& TargetHp, f
 	
 }
 
-void UHsHeal::OnHeal(FHealth& TargetHp, float HealValue)
+void UHsHeal::OnHeal(FHealth& TargetHp, FS_DmgInput HealValue)
 {
 }
