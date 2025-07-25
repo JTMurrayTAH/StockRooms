@@ -8,7 +8,7 @@
 #include "Healable.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(Blueprintable)
 class UHealable : public UInterface
 {
 	GENERATED_BODY()
